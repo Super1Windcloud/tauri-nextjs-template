@@ -25,6 +25,10 @@ manager, and uses the [App Router](https://nextjs.org/docs/app) model for Next.j
   - [clippy](https://github.com/rust-lang/rust-clippy) and
     [rustfmt](https://github.com/rust-lang/rustfmt) for Rust code
 - GitHub Actions to check code formatting and linting for both TypeScript and Rust
+- Enhanced UI with hidden scrollbars across the application for a cleaner look
+  - Scrollbar hiding implemented at the CSS level with comprehensive styles
+  - ScrollArea component updated to support optional scrollbar hiding
+  - Cross-browser compatibility for scrollbar hiding (webkit, Firefox, IE)
 
 ## Getting Started
 
@@ -66,6 +70,31 @@ pnpm tauri build
 Next.js frontend source files are located in `src/` and Tauri Rust application source
 files are located in `src-tauri/`. Please consult the Next.js and Tauri documentation
 respectively for questions pertaining to either technology.
+
+## Customization
+
+### Scrollbar Styling
+
+This template includes comprehensive scrollbar hiding functionality that applies across the entire application. The implementation includes: 
+ 
+- Global CSS rules to hide scrollbars in all browsers using `::-webkit-scrollbar`, `scrollbar-width: none`, and `-ms-overflow-style: none`
+- A `.scroll-hidden` utility class for targeted scrollbar hiding on specific elements
+- Enhanced `ScrollArea` component with optional `hideScrollbar` prop for hiding scrollbars only where needed
+
+To use the optional scrollbar hiding in a ScrollArea component, use the `hideScrollbar` prop:
+```tsx
+<ScrollArea hideScrollbar={true}>
+  {/* content */}
+</ScrollArea>
+```
+
+### Fonts
+
+This template now uses system fonts instead of Google Fonts to ensure build compatibility with Next.js 16 and Turbopack:
+- `--font-geist-sans` is mapped to `ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`
+- `--font-geist-mono` is mapped to `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`
+
+This change maintains the same design aesthetic while avoiding Turbopack build issues with Google Fonts.
 
 ## Caveats
 
