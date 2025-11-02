@@ -40,6 +40,14 @@ export default function Home() {
 							亲自尝试。
 						</li>
 						<li>切换主题，观察窗口标题栏与页面组件自动适配新配色。</li>
+						<li>
+							查看 <a 
+								href="/routing-demo" 
+								className="text-primary hover:underline"
+							>
+								路由组件演示
+							</a> 了解 Next.js 路由功能。
+						</li>
 					</ol>
 				</main>
 
